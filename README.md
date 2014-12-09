@@ -26,7 +26,7 @@ Usage
 -----
 
 Once the extension is installed, simply activate module in config file  :
-
+```
 <?php
     ......
    'modules' => [
@@ -42,4 +42,5 @@ Once the extension is installed, simply activate module in config file  :
     ],
     ......
 
-?>```
+?>
+```
