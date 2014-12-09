@@ -23,18 +23,26 @@ class DefaultController extends Controller {
         ];
     }
 
-    public function actionIndex(){
+    public function actionIndex() {
         $curl = new Curl();
         $curl->get($this->module->apiUrl . '/counters?oauth_token=' . $this->module->OAuthToken);
         return $this->render('index', ['curl' => $curl]);
     }
 
     public function actionAuth() {
-        $this->redirect('https://oauth.yandex.ru/authorize?response_type=code&client_id='.$this->module->appId.'&display=popup');
+        $this->redirect($this->module->OAthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId . '&display=popup');
     }
-    
+
     public function actionVerificationCode() {
-        var_dump(Yii::$app->request->get('code'));
+        $code = Yii::$app->request->get('code');
+        $curl = new Curl();
+        $curl->post($this->module->OAthUrll . '/token', [
+            'grant_type' => 'authorization_code',
+            'code' => $code,
+            'client_id' => $this->module->appId,
+            'client_secret' => $this->module->appPassword,
+        ]);
+        var_dump($curl);
     }
 
 }

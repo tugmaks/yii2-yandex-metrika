@@ -10,6 +10,7 @@ class Module extends \yii\base\Module {
     public $appPassword;
     public $OAuthToken;
     public $apiUrl = 'http://api-metrika.yandex.ru';
+    public $OAuthUrl = 'https://oauth.yandex.ru';
 
     public function init() {
         parent::init();
