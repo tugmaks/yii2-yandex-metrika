@@ -8,6 +8,13 @@ use yii\filters\AccessControl;
 use Curl\Curl;
 
 class DefaultController extends Controller {
+    
+    public function init() {
+        parent::init();
+        if($this->module->OAuthToken === null){
+            $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId);
+        }
+    }
 
     public function behaviors() {
         return [
@@ -22,6 +29,8 @@ class DefaultController extends Controller {
             ],
         ];
     }
+    
+    
 
     public function actionIndex() {
         $curl = new Curl();
@@ -44,13 +53,6 @@ class DefaultController extends Controller {
         $this->redirect('/yandex-metrika/default/index');
     }
 
-    public function beforeAction($action) {
-        if (parent::beforeAction($action)) {
-            if (null === $this->module->OAuthToken) {
-                $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId);
-            }
-        }
-    }
 
     public function actionAuth() {
         $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId);
