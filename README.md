@@ -48,4 +48,7 @@ Once the extension is installed, simply activate module in config file:
 ?>
 ```
 
+Run migration. Module will create own table for migration history tbl_ym_migrations
+```php
 yii migrate/up --migrationPath=@vendor/tugmaks/yii2-yandex-metrika/migrations --migrationTable=tbl_ym_migrations
+```

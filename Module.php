@@ -2,6 +2,8 @@
 
 namespace tugmaks\YandexMetrika;
 
+use tugmaks\YandexMetrika\models\YmSettings;
+
 class Module extends \yii\base\Module {
 
     public $allowedRoles = ['Superadministrator'];
@@ -14,6 +16,8 @@ class Module extends \yii\base\Module {
 
     public function init() {
         parent::init();
+        $settings = YmSettings::findOne(['id' => 1]);
+        $this->OAuthToken = $settings->token;
 
         // custom initialization code goes here
     }

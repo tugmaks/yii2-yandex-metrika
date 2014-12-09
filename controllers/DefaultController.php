@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use Curl\Curl;
+use tugmaks\YandexMetrika\models\YmSettings;
 
 class DefaultController extends Controller {
 
@@ -47,17 +48,15 @@ class DefaultController extends Controller {
         ]);
 
         $token = $curl->response->access_token;
-        $this->saveToken($token);
-        var_dump($token);
-        //$this->redirect('/yandex-metrika/default/index');
+        $settings = YmSettings::findOne(['id' => 1]);
+        $settings->token = $token;
+        $settings->save();
+
+        $this->redirect('/yandex-metrika/default/index');
     }
 
     public function actionAuth() {
         $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId);
-    }
-
-    private function saveToken($token) {
-        
     }
 
 }
