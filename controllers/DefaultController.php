@@ -23,10 +23,14 @@ class DefaultController extends Controller {
         ];
     }
 
-    public function actionIndex() {
+    public function actionIndex(){
         $curl = new Curl();
-        $curl->get($this->module->apiUrl.'/counters?oauth_token=' . $this->module->OAuthToken);
-        return $this->render('index',['curl'=>$curl]);
+        $curl->get($this->module->apiUrl . '/counters?oauth_token=' . $this->module->OAuthToken);
+        return $this->render('index', ['curl' => $curl]);
+    }
+
+    public function actionAuth() {
+        $this->redirect('https://oauth.yandex.ru/authorize?response_type=json&client_id='.$this->module->appId);
     }
 
 }
