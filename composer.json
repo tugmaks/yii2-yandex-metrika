@@ -1,0 +1,21 @@
+{
+    "name": "tugmaks/yii2-yandex-metrika",
+    "description": "Module to rule your yandex metrika counters.",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"," yandex metrika"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maxim Tugaev",
+            "email": "tugmaks@yandex.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "tugmaks\\YandexMetrika\\": ""
+        }
+    }
+}
