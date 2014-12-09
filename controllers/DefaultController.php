@@ -30,7 +30,11 @@ class DefaultController extends Controller {
     }
 
     public function actionAuth() {
-        $this->redirect('https://oauth.yandex.ru/authorize?response_type=json&client_id='.$this->module->appId);
+        $this->redirect('https://oauth.yandex.ru/authorize?response_type=token&client_id='.$this->module->appId.'&display=popup');
+    }
+    
+    public function actionVerificationCode() {
+        
     }
 
 }
