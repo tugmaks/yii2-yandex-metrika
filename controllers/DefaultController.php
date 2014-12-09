@@ -40,7 +40,7 @@ class DefaultController extends Controller {
         ]);
 
         $token = $curl->response->access_token;
-        $this->module->OAutToken = $token;
+        $this->module->OAuthToken = $token;
         $this->redirect('index');
     }
 
