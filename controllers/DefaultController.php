@@ -30,13 +30,13 @@ class DefaultController extends Controller {
     }
 
     public function actionAuth() {
-        $this->redirect($this->module->OAthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId . '&display=popup');
+        $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId . '&display=popup');
     }
 
     public function actionVerificationCode() {
         $code = Yii::$app->request->get('code');
         $curl = new Curl();
-        $curl->post($this->module->OAthUrl . '/token', [
+        $curl->post($this->module->OAuthUrl . '/token', [
             'grant_type' => 'authorization_code',
             'code' => $code,
             'client_id' => $this->module->appId,
