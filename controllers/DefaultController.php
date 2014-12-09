@@ -40,6 +40,8 @@ class DefaultController extends Controller {
         ]);
 
         $token = $curl->response->access_token;
+        $this->module->OAutToken = $token;
+        $this->redirect('index');
     }
 
     public function beforeAction($action) {
