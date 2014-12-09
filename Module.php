@@ -4,6 +4,7 @@ namespace tugmaks\YandexMetrika;
 
 class Module extends \yii\base\Module {
 
+    public $allowedRoles = ['Superadministrator'];
     public $controllerNamespace = 'tugmaks\YandexMetrika\controllers';
 
     public function init() {
