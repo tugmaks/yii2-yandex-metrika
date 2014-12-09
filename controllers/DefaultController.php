@@ -41,13 +41,13 @@ class DefaultController extends Controller {
 
         $token = $curl->response->access_token;
         $this->module->OAuthToken = $token;
-        $this->redirect('default/index');
+        $this->redirect('/index');
     }
 
     public function beforeAction($action) {
         if (parent::beforeAction($action)) {
             if (null === $this->module->OAuthToken) {
-                $this->redirect('default/auth');
+                $this->redirect('/auth');
             }
         }
     }
