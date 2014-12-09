@@ -8,7 +8,7 @@ class Module extends \yii\base\Module {
     public $controllerNamespace = 'tugmaks\YandexMetrika\controllers';
     public $appId;
     public $appPassword;
-    public $OAuthToken;
+    public $OAuthToken = null;
     public $apiUrl = 'http://api-metrika.yandex.ru';
     public $OAuthUrl = 'https://oauth.yandex.ru';
 

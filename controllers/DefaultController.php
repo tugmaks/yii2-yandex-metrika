@@ -29,10 +29,6 @@ class DefaultController extends Controller {
         return $this->render('index', ['curl' => $curl]);
     }
 
-    public function actionAuth() {
-        $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId . '&display=popup');
-    }
-
     public function actionVerificationCode() {
         $code = Yii::$app->request->get('code');
         $curl = new Curl();
@@ -42,7 +38,20 @@ class DefaultController extends Controller {
             'client_id' => $this->module->appId,
             'client_secret' => $this->module->appPassword,
         ]);
-        var_dump($curl);
+
+        $token = $curl->response->access_token;
+    }
+
+    public function beforeAction($action) {
+        if (parent::beforeAction($action)) {
+            if (null === $this->module->OAthToken) {
+                $this->redirect('auth');
+            }
+        }
+    }
+
+    public function actionAuth() {
+        $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId);
     }
 
 }
