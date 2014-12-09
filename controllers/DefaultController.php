@@ -34,7 +34,7 @@ class DefaultController extends Controller {
     }
     
     public function actionVerificationCode() {
-        
+        var_dump($_GET);
     }
 
 }
