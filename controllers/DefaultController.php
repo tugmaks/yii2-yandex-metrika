@@ -46,7 +46,7 @@ class DefaultController extends Controller {
 
     public function beforeAction($action) {
         if (parent::beforeAction($action)) {
-            if (null === $this->module->OAthToken) {
+            if (null === $this->module->OAuthToken) {
                 $this->redirect('auth');
             }
         }
