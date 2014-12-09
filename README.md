@@ -29,3 +29,16 @@ Once the extension is installed, simply use it in your code by  :
 
 ```php
 <?= \tugmaks\YandexMetrika\AutoloadExample::widget(); ?>```
+
+
+```php
+<?php
+    ......
+    'modules' => [
+        'yandex-metrika' => [
+            'class' => 'tugmaks\YandexMetrika\Module',
+        ],
+    ],
+    ......
+
+?>```
