@@ -39,8 +39,8 @@ Once the extension is installed, simply activate module in config file:
              * 'allowedRoles'=>['Admin','Seo-Manager'],
              */
 
-            'appId' => 'd6abf71d461d4f41ae3c8aed3b533f56',
-            'appPassword' => '48596fb6a18a4f509596252c77a9e5b3',
+            'appId' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+            'appPassword' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
         ],
     ],
     ......
