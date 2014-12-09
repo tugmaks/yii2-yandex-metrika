@@ -10,3 +10,5 @@
         <code><?= __FILE__ ?></code>
     </p>
 </div>
+
+<?php var_dump($curl) ?>

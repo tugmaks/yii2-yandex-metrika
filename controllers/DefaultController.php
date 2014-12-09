@@ -5,6 +5,7 @@ namespace tugmaks\YandexMetrika\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use Curl\Curl;
 
 class DefaultController extends Controller {
 
@@ -15,7 +16,7 @@ class DefaultController extends Controller {
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => Yii::$app->controller->module->allowedRoles,
+                        'roles' => $this->module->allowedRoles,
                     ],
                 ],
             ],
@@ -23,7 +24,9 @@ class DefaultController extends Controller {
     }
 
     public function actionIndex() {
-        return $this->render('index');
+        $curl = new Curl();
+        $curl->get($this->module->apiUrl.'/counters?oauth_token=' . $this->module->OAuthToken);
+        return $this->render('index',['curl'=>$curl]);
     }
 
 }
