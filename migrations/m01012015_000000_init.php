@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class init extends Migration {
+class m01012015_000000_init extends Migration {
 
     public function safeUp() {
         $this->createTable('tbl_ym_settings', [
