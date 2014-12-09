@@ -47,7 +47,7 @@ class DefaultController extends Controller {
     public function beforeAction($action) {
         if (parent::beforeAction($action)) {
             if (null === $this->module->OAuthToken) {
-                $this->redirect('/yandex-metrika/default/auth');
+                $this->redirect($this->module->OAuthUrl . '/authorize?response_type=code&client_id=' . $this->module->appId);
             }
         }
     }
