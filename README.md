@@ -52,3 +52,4 @@ Run migration. Module will create own table for migration history tbl_ym_migrati
 ```php
 yii migrate/up --migrationPath=@vendor/tugmaks/yii2-yandex-metrika/migrations --migrationTable=tbl_ym_migrations
 ```
+.
