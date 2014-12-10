@@ -33,11 +33,10 @@ class DefaultController extends Controller {
     }
 
     public function actionIndex() {
-        $counters = $this->module->getCounters();
         $provider = new ArrayDataProvider([
-            'allModels' => $counters,
+            'allModels' => $this->module->getCounters(),
         ]);
-        return $this->render('index', ['provider' => $provider,'counters'=>  $this->module->callApi('counters')->counters->counter]);
+        return $this->render('index', ['provider' => $provider]);
     }
 
     public function actionVerificationCode() {
