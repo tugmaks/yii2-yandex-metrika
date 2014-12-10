@@ -5,6 +5,7 @@ namespace tugmaks\YandexMetrika;
 use tugmaks\YandexMetrika\models\YmSettings;
 use Curl\Curl;
 use yii\web\HttpException;
+use yii\helpers\ArrayHelper;
 
 class Module extends \yii\base\Module {
 
@@ -44,13 +45,7 @@ class Module extends \yii\base\Module {
     }
 
     public function getCounters() {
-        $result = $this->callApi('counters')->counters->counter;
-
-        $counters = [];
-        foreach ($result as $counter) {
-            $counters[] = $counter;
-        }
-        return $result;
+        return ArrayHelper::toArray($this->callApi('counters')->counters->counter);
     }
 
     /*
