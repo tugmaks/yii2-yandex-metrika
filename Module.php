@@ -49,7 +49,7 @@ class Module extends \yii\base\Module {
         }
         $formattedUrl = preg_replace_callback("/{\\w+}/", function ($matches) use ($params) {
             $match = strtr($matches[0], ['{' => '', '}' => '']);
-            if (!array_key_exists($matches[0], $params)) {
+            if (!array_key_exists($match, $params)) {
                 throw new HttpException(404, "YM: Missing $match parameter.");
             }
             return $params[$match];
