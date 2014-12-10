@@ -1,2 +1,7 @@
-<?php var_dump($result1) ?>
-<?php var_dump($result2) ?>
+<?php
+
+use yii\widgets\ListView;
+
+ListView::widget(['dataProvider' => $provider, 'itemView' => '_counter', 'layout' => "{items} \n {pager}"]);
+
+
