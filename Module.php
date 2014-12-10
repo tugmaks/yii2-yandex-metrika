@@ -42,9 +42,15 @@ class Module extends \yii\base\Module {
         $settings = YmSettings::findOne(['id' => 1]);
         $this->OAuthToken = $settings->token;
     }
-    
-    public function getCounters(){
-        return $this->callApi('counters')->counters;
+
+    public function getCounters() {
+        $result = $this->callApi('counters')->counters;
+
+        $counters = [];
+        foreach ($result as $counter) {
+            $counters[] = $counter;
+        }
+        return $counters;
     }
 
     public function callApi($resource, $params = [], $method = self::METHOD_GET) {
