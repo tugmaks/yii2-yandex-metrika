@@ -45,8 +45,7 @@ class Module extends \yii\base\Module {
     }
 
     public function getCounters() {
-        var_dump($counters = $this->callApi('counters',[],  self::METHOD_POST));
-        $counters = $this->callApi('counters',[],  self::METHOD_POST)->counters->counter;
+        $counters = $this->callApi('counters')->counters->counter;
         return static::asArray($counters);
     }
 

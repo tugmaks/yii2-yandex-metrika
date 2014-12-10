@@ -1,8 +1,7 @@
 <?php
-
-use yii\widgets\ListView;
-
-echo ListView::widget(['dataProvider' => $provider, 'itemView' => '_counter', 'layout' => "{items} \n {pager}"]);
+use yii\helpers\Html;
 ?>
-
+<ul>
+    <li><?=  Html::a('Счетчики',['counters'])?></li>
+</ul>
 
