@@ -2,6 +2,6 @@
 use yii\helpers\Html;
 ?>
 <ul>
-    <li><?=  Html::a('Счетчики',['counters'])?></li>
+    <li><?=  Html::a('Counters (Счетчики)',['counters'])?></li>
 </ul>
 
