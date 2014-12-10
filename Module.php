@@ -42,19 +42,27 @@ class Module extends \yii\base\Module {
         $settings = YmSettings::findOne(['id' => 1]);
         $this->OAuthToken = $settings->token;
     }
+    
+    public function getCounters(){
+        return $this->callApi('counters');
+    }
 
     public function callApi($resource, $params = [], $method = self::METHOD_GET) {
         if (!array_key_exists($resource, $this->resources)) {
             throw new HttpException(404, "YM: Resource $resource not found.");
         }
-        $formattedUrl = preg_replace_callback("/{\\w+}/", function ($matches) use ($params) {
+        $resoursePath = preg_replace_callback("/{\\w+}/", function ($matches) use ($params) {
             $match = strtr($matches[0], ['{' => '', '}' => '']);
             if (!array_key_exists($match, $params)) {
                 throw new HttpException(404, "YM: Missing $match parameter.");
             }
             return $params[$match];
         }, $this->resources[$resource]);
-        return $formattedUrl;
+        $resourceUrl = $this->apiUrl . $resoursePath . '?oauth_token=' . $this->module->OAuthToken;
+
+        $curl = new Curl();
+        $curl->$method($resourceUrl);
+        return $curl->response;
     }
 
 }

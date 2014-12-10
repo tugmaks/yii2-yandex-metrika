@@ -32,8 +32,9 @@ class DefaultController extends Controller {
     }
 
     public function actionIndex() {
-        $result = $this->module->callApi('counter',['id'=>123]);
-        return $this->render('index', ['result' => $result]);
+        $result1 = $this->module->callApi('counters');
+        $result2 = $this->module->getCounters();
+        return $this->render('index', ['result1' => $result1,'result2' => $result2]);
     }
 
     public function actionVerificationCode() {
