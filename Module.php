@@ -45,7 +45,7 @@ class Module extends \yii\base\Module {
     }
 
     public function getCounters() {
-        return ArrayHelper::toArray($this->callApi('counters')->counters->counter);
+        return (array) $this->callApi('counters')->counters->counter;
     }
 
     /*
