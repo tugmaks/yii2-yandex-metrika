@@ -58,7 +58,7 @@ class Module extends \yii\base\Module {
             }
             return $params[$match];
         }, $this->resources[$resource]);
-        $resourceUrl = $this->apiUrl . $resoursePath . '?oauth_token=' . $this->module->OAuthToken;
+        $resourceUrl = $this->apiUrl . $resoursePath . '?oauth_token=' . $this->OAuthToken;
 
         $curl = new Curl();
         $curl->$method($resourceUrl);
