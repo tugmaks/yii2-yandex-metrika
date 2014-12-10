@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use tugmaks\YandexMetrika\models\YmSettings;
 use yii\data\ArrayDataProvider;
+use Curl\Curl;
 
 class DefaultController extends Controller {
 
