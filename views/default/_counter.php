@@ -6,7 +6,7 @@ use yii\helpers\Html;
 <div style="margin: 5px;width: 250px; float: left">
 
     <?php
-    var_dump($model->code_status);
+    var_dump($model);
     echo
     DetailView::widget([
         'model' => $model,
