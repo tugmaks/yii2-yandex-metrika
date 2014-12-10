@@ -10,7 +10,7 @@ use tugmaks\YandexMetrika\Module;
         'attributes' => [
             [
                 'label' => 'Статус',
-                'value' => Module::getCounterStatus($model->counter_status),
+                'value' => $this->context->module->getCounterStatus($model->counter_status),
             ],
         ],
     ]);
