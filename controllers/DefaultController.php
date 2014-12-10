@@ -33,14 +33,14 @@ class DefaultController extends Controller {
     }
 
     public function actionIndex() {
-        $provider = new ArrayDataProvider([
-            'allModels' => $this->module->getCounters(),
-        ]);
-        return $this->render('index', ['provider' => $provider]);
+        return $this->render('index');
     }
 
     public function actionCounters() {
-        return $this->render('counters');
+        $provider = new ArrayDataProvider([
+            'allModels' => $this->module->getCounters(),
+        ]);
+        return $this->render('counters', ['provider' => $provider]);
     }
 
     public function actionVerificationCode() {
