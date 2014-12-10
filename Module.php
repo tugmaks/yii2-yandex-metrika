@@ -45,14 +45,15 @@ class Module extends \yii\base\Module {
 
     public function callApi($resource, $params = [], $method = self::METHOD_GET) {
         if (!array_key_exists($resource, $this->resources)) {
-            throw new HttpException(404, "YM: Resource $resource not found");
+            throw new HttpException(404, "YM: Resource $resource not found.");
         }
         $that = $this;
         $formattedUrl = preg_replace_callback("/{\\w+}/", function ($matches) use ($params) {
+            $match = strtr($matches[0], ['{' => '', '}' => '']);
             if (!array_key_exists($matches[0], $params)) {
-                throw new HttpException(404, "YM: Missing $matches[0] parametr.");
+                throw new HttpException(404, "YM: Missing $match parameter.");
             }
-            return $params[$matches[0]];
+            return $params[$match];
         }, $this->resources[$resource]);
     }
 
