@@ -1,6 +1,7 @@
 <?php
 
 use yii\widgets\DetailView;
+use yii\helpers\Html;
 ?>
 <div style="margin: 5px;width: 250px; float: left">
 
@@ -13,6 +14,10 @@ use yii\widgets\DetailView;
             [
                 'label' => 'Статус',
                 'value' => $this->context->module->getCounterStatus((string)$model->code_status),
+            ],
+            [
+                'label' => 'Сайт',
+                'value' => Html::a($model->site, $model->site, ['target'=>'_blank']),
             ],
         ],
     ]);
