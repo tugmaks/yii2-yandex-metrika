@@ -11,13 +11,14 @@ use yii\helpers\Html;
     DetailView::widget([
         'model' => $model,
         'attributes' => [
-            [
-                'label' => 'Статус',
-                'value' => $this->context->module->getCounterStatus((string)$model->code_status),
-            ],
+
             [
                 'label' => 'Сайт',
-                'value' => Html::a($model->site, $model->site, ['target'=>'_blank']),
+                'value' => Html::a($model->site, $model->site, ['target' => '_blank']),
+            ],
+            [
+                'label' => 'Статус',
+                'value' => $this->context->module->getCounterStatus((string) $model->code_status),
             ],
         ],
     ]);
