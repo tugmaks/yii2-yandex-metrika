@@ -32,7 +32,7 @@ class DefaultController extends Controller {
     }
 
     public function actionIndex() {
-        $result = $this->module->callApi('counters');
+        $result = $this->module->callApi('counters1');
         return $this->render('index', ['result' => $result]);
     }
 
