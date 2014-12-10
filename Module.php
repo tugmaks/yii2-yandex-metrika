@@ -47,7 +47,6 @@ class Module extends \yii\base\Module {
         if (!array_key_exists($resource, $this->resources)) {
             throw new HttpException(404, "YM: Resource $resource not found.");
         }
-        $that = $this;
         $formattedUrl = preg_replace_callback("/{\\w+}/", function ($matches) use ($params) {
             $match = strtr($matches[0], ['{' => '', '}' => '']);
             if (!array_key_exists($matches[0], $params)) {
@@ -55,6 +54,7 @@ class Module extends \yii\base\Module {
             }
             return $params[$match];
         }, $this->resources[$resource]);
+        return $formattedUrl;
     }
 
 }
