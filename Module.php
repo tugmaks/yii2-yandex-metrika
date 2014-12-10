@@ -44,14 +44,18 @@ class Module extends \yii\base\Module {
     }
 
     public function getCounters() {
-        $result = $this->callApi('counters')->counters->counter;
+        $result = (array)$this->callApi('counters')->counters->counter;
 
         $counters = [];
         foreach ($result as $counter) {
             $counters[] = $counter;
         }
-        return $counters;
+        return $result;
     }
+
+    /*
+     * TODO pass additional params
+     */
 
     public function callApi($resource, $params = [], $method = self::METHOD_GET) {
         if (!array_key_exists($resource, $this->resources)) {
@@ -60,7 +64,7 @@ class Module extends \yii\base\Module {
         $resoursePath = preg_replace_callback("/{\\w+}/", function ($matches) use ($params) {
             $match = strtr($matches[0], ['{' => '', '}' => '']);
             if (!array_key_exists($match, $params)) {
-                throw new HttpException(404, "YM: Missing $match parameter.");
+                throw new HttpException(404, "YM: Missing required $match parameter.");
             }
             return $params[$match];
         }, $this->resources[$resource]);
