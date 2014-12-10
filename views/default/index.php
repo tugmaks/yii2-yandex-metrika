@@ -11,4 +11,4 @@
     </p>
 </div>
 
-<?php var_dump($curl->response) ?>
+<?php var_dump($result->response) ?>

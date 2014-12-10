@@ -5,8 +5,8 @@ namespace tugmaks\YandexMetrika\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
-use Curl\Curl;
 use tugmaks\YandexMetrika\models\YmSettings;
+use tugmaks\YandexMetrika\Module;
 
 class DefaultController extends Controller {
 
@@ -32,9 +32,8 @@ class DefaultController extends Controller {
     }
 
     public function actionIndex() {
-        $curl = new Curl();
-        $curl->get($this->module->apiUrl . '/counters?oauth_token=' . $this->module->OAuthToken);
-        return $this->render('index', ['curl' => $curl]);
+        $result = $this->module->callApi('counters');
+        return $this->render('index', ['result' => $result]);
     }
 
     public function actionVerificationCode() {
