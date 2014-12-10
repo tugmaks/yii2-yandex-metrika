@@ -45,7 +45,8 @@ class Module extends \yii\base\Module {
     }
 
     public function getCounters() {
-        return $this->callApi('counters')->counters->count;
+        $counters = $this->callApi('counters')->counters->counter;
+        return static::asArray($counters);
     }
 
     /*
@@ -70,7 +71,7 @@ class Module extends \yii\base\Module {
         return $curl->response;
     }
 
-    private function loop($objects) {
+    public static function asArray($objects) {
         $output = [];
         foreach ($objects as $object) {
             $output[] = $object;
