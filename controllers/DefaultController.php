@@ -37,7 +37,7 @@ class DefaultController extends Controller {
         $provider = new ArrayDataProvider([
             'allModels' => $counters,
         ]);
-        return $this->render('index', ['provider' => $provider,'counters'=>  $this->module->callApi('counters')->counters]);
+        return $this->render('index', ['provider' => $provider,'counters'=>  $this->module->callApi('counters')->counters->counter]);
     }
 
     public function actionVerificationCode() {
