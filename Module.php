@@ -44,7 +44,7 @@ class Module extends \yii\base\Module {
     }
     
     public function getCounters(){
-        return $this->callApi('counters')->counters->counter;
+        return $this->callApi('counters')->counters;
     }
 
     public function callApi($resource, $params = [], $method = self::METHOD_GET) {
