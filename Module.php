@@ -37,6 +37,25 @@ class Module extends \yii\base\Module {
         'accounts' => '/accounts',
         'account' => '/account/{user_login}',
     ];
+    public $counterStatus = [
+        'CS_ERR_CONNECT' => 'Не удалось проверить (ошибка соединения).',
+        'CS_ERR_DUPLICATED' => 'Установлен более одного раза.',
+        'CS_ERR_HTML_CODE' => 'Установлен некорректно.',
+        'CS_ERR_OTHER_HTML_CODE' => 'Уже установлен другой счетчик.',
+        'CS_ERR_TIMEOUT' => 'Не удалось проверить (превышено время ожидания).',
+        'CS_ERR_UNKNOWN' => 'Неизвестная ошибка.',
+        'CS_NEW_COUNTER' => 'Недавно создан.',
+        'CS_NA' => 'Не применим к данному счетчику.',
+        'CS_NOT_EVERYWHERE' => 'Установлен не на всех страницах.',
+        'CS_NOT_FOUND' => 'Не установлен.',
+        'CS_NOT_FOUND_HOME' => 'Не установлен на главной странице.',
+        'CS_NOT_FOUND_HOME_LOAD_DATA' => 'Не установлен на главной странице, но данные поступают.',
+        'CS_OBSOLETE' => 'Установлена устаревшая версия кода счетчика.',
+        'CS_OK' => 'Корректно установлен.',
+        'CS_OK_NO_DATA' => 'Установлен, но данные не поступают.',
+        'CS_WAIT_FOR_CHECKING' => 'Ожидает проверки наличия.',
+        'CS_WAIT_FOR_CHECKING_LOAD_DATA' => 'Ожидает проверки наличия, данные поступают.',
+    ];
 
     public function init() {
         parent::init();
@@ -78,6 +97,10 @@ class Module extends \yii\base\Module {
         }
 
         return $output;
+    }
+
+    public function getCounterStatus($code) {
+        return $this->counterStatus[$code];
     }
 
 }
