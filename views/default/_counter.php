@@ -7,15 +7,15 @@ use tugmaks\YandexMetrika\Module;
 
     <?php
     var_dump($model);
-    //echo
-//    DetailView::widget([
-//        'model' => $model,
-//        'attributes' => [
-//            [
-//                'label' => 'Статус',
-//                'value' => $this->context->module->getCounterStatus($model->code_status),
-//            ],
-//        ],
-//    ]);
+    echo
+    DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            [
+                'label' => 'Статус',
+                'value' => $this->context->module->getCounterStatus($model->code_status),
+            ],
+        ],
+    ]);
     ?>
 </div>
