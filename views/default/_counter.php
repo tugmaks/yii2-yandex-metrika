@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 <div style="margin: 5px;width: 250px; float: left">
 
     <?php
-    var_dump($model);
+    var_dump($model->code_status);
     echo
     DetailView::widget([
         'model' => $model,
