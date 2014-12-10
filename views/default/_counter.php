@@ -15,6 +15,7 @@ use yii\helpers\Html;
             [
                 'label' => 'Сайт',
                 'value' => Html::a($model->site, $model->site, ['target' => '_blank']),
+                'format' => 'html',
             ],
             [
                 'label' => 'Статус',
