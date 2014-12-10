@@ -12,7 +12,7 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "php-curl-class/php-curl-class": "dev-master"
+        "php-curl-class/php-curl-class": "*"
     },
     "autoload": {
         "psr-4": {
