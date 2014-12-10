@@ -11,6 +11,7 @@ class m000000_010115_init extends Migration {
             'token' => Schema::TYPE_STRING . " NULL DEFAULT NULL COMMENT'Yandex Token'",
                 ], "COMMENT'Module Settings'"
         );
+        $this->insert('tbl_ym_settings', ['id' => 1, 'token' => null]);
     }
 
     public function down() {
