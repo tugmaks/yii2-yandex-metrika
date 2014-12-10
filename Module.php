@@ -44,7 +44,7 @@ class Module extends \yii\base\Module {
     }
 
     public function getCounters() {
-        $result = (array)$this->callApi('counters')->counters->counter;
+        $result = $this->callApi('counters')->counters;
 
         $counters = [];
         foreach ($result as $counter) {
@@ -57,7 +57,7 @@ class Module extends \yii\base\Module {
      * TODO pass additional params
      */
 
-    public function callApi($resource, $params = [], $method = self::METHOD_GET) {
+    private function callApi($resource, $params = [], $method = self::METHOD_GET) {
         if (!array_key_exists($resource, $this->resources)) {
             throw new HttpException(404, "YM: Resource $resource not found.");
         }
@@ -73,6 +73,15 @@ class Module extends \yii\base\Module {
         $curl = new Curl();
         $curl->$method($resourceUrl);
         return $curl->response;
+    }
+
+    private function loop($objects) {
+        $output = [];
+        foreach ($objects as $object) {
+            $output[] = $object;
+        }
+
+        return $output;
     }
 
 }
