@@ -31,7 +31,7 @@ use yii\helpers\Url;
             ],
             [
                 'label' => 'id',
-                'value' => Html::a($model->id, ['counter','id'=>$model->id]),
+                'value' => Html::a($model->id, ['counter','id'=>(integer)$model->id]),
                 'format' => 'html',
             ],
             [
