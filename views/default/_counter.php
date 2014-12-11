@@ -14,7 +14,7 @@ use yii\helpers\Url;
         'attributes' => [
             [
                 'label' => 'Сайт',
-                'value' => Html::a($model->site, Url::to($model->site, true), ['target' => '_blank']),
+                'value' => Html::a($model->site, Url::to($model->site, 'http'), ['target' => '_blank']),
                 'format' => 'html',
             ],
             [
