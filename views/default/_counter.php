@@ -4,7 +4,7 @@ use yii\widgets\DetailView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<div style="margin: 5px;width: 250px; float: left">
+<div style="margin: 5px;width: 300px; float: left">
 
     <?php
     var_dump($model);
