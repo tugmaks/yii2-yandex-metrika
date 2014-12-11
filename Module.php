@@ -61,6 +61,10 @@ class Module extends \yii\base\Module {
         'view' => 'Гостевой счетчик с уровнем доступа «только просмотр»',
         'edit' => 'Гостевой счетчик с уровнем доступа «полный доступ»'
     ];
+    public $counterType = [
+        'simple' => 'Счетчик создан пользователем в Метрике',
+        'partner' => 'Счетчик импортирован из РСЯ'
+    ];
 
     public function init() {
         parent::init();
@@ -111,8 +115,12 @@ class Module extends \yii\base\Module {
         return $this->counterStatus[$code];
     }
 
-    public function getCounterpermission($permission) {
+    public function getCounterPermission($permission) {
         return $this->counterPermission[$permission];
+    }
+
+    public function getCounterType($type) {
+        return $this->counterType[$type];
     }
 
 }

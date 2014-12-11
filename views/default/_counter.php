@@ -32,6 +32,11 @@ use yii\helpers\Url;
             [
                 'label' => 'id',
                 'value' => Html::a($model->id, ['counter',['id'=>$model->id]]),
+                'format' => 'html',
+            ],
+            [
+                'label' => 'Тип',
+                'value' => $this->context->module->getCounterType((string) $model->type),
             ],
         ],
     ]);
