@@ -27,7 +27,7 @@ use yii\helpers\Url;
             ],
             [
                 'label' => 'Название',
-                'value' => var_dump($model->name),
+                'value' => (string) $model->name,
             ],
         ],
     ]);
