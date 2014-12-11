@@ -12,7 +12,6 @@ use yii\helpers\Url;
     DetailView::widget([
         'model' => $model,
         'attributes' => [
-
             [
                 'label' => 'Сайт',
                 'value' => Html::a($model->site, Url::to($model->site), ['target' => '_blank']),
