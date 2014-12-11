@@ -2,6 +2,7 @@
 
 use yii\widgets\DetailView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 ?>
 <div style="margin: 5px;width: 250px; float: left">
 
@@ -14,7 +15,7 @@ use yii\helpers\Html;
 
             [
                 'label' => 'Сайт',
-                'value' => Html::a($model->site, $model->site, ['target' => '_blank']),
+                'value' => Html::a($model->site, Url::to($model->site), ['target' => '_blank']),
                 'format' => 'html',
             ],
             [
@@ -23,7 +24,7 @@ use yii\helpers\Html;
             ],
             [
                 'label' => 'Уровень доступа',
-                'value' => $this->context->module->getCountePermission((string) $model->permission),
+                'value' => $this->context->module->getCounterPermission((string) $model->permission),
             ],
         ],
     ]);
