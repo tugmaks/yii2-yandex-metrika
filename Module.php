@@ -56,6 +56,12 @@ class Module extends \yii\base\Module {
         'CS_WAIT_FOR_CHECKING' => 'Ожидает проверки наличия.',
         'CS_WAIT_FOR_CHECKING_LOAD_DATA' => 'Ожидает проверки наличия, данные поступают.',
     ];
+    
+    public $counterPermission =[
+        'own'=>'Cобственный счетчик пользователя',
+        'view'=>'Гостевой счетчик с уровнем доступа «только просмотр»',
+        'edit'=>'Гостевой счетчик с уровнем доступа «полный доступ»'
+    ];
 
     public function init() {
         parent::init();
@@ -101,6 +107,10 @@ class Module extends \yii\base\Module {
 
     public function getCounterStatus($code) {
         return $this->counterStatus[$code];
+    }
+    
+    public function getCounterpermission($permission) {
+        return $this->counterPermission[$permission];
     }
 
 }

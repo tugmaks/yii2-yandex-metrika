@@ -21,6 +21,10 @@ use yii\helpers\Html;
                 'label' => 'Статус',
                 'value' => $this->context->module->getCounterStatus((string) $model->code_status),
             ],
+            [
+                'label' => 'Уровень доступа',
+                'value' => $this->context->module->getCountePermission((string) $model->permission),
+            ],
         ],
     ]);
     ?>
