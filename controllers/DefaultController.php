@@ -38,7 +38,7 @@ class DefaultController extends Controller {
 
     public function actionCounters() {
         $provider = new ArrayDataProvider([
-            'allModels' => $this->module->getCounters(['type'=>'partner']),
+            'allModels' => $this->module->getCounters(),
         ]);
         return $this->render('counters', ['provider' => $provider]);
     }
