@@ -43,6 +43,10 @@ class DefaultController extends Controller {
         return $this->render('counters', ['provider' => $provider]);
     }
 
+    public function actionCounter($id) {
+        return $this->render('counter', ['counter' => $this->module->getCounter($id)]);
+    }
+
     public function actionVerificationCode() {
         $code = Yii::$app->request->get('code');
         $curl = new Curl();

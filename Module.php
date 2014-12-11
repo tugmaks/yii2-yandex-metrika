@@ -72,9 +72,15 @@ class Module extends \yii\base\Module {
         $this->OAuthToken = $settings->token;
     }
 
-    public function getCounters($params = []) {
+    public function getCounters($params) {
         $counters = $this->callApi('counters', $params)->counters->counter;
         return static::asArray($counters);
+    }
+
+    public function getCounter($params) {
+        $counter = $this->callApi('counter', $params);
+        ;
+        return $counter;
     }
 
     /*

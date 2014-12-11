@@ -6,10 +6,7 @@ use yii\helpers\Url;
 ?>
 <div style="margin: 5px;width: 300px; float: left">
 
-    <?php
-    var_dump($model);
-    echo
-    DetailView::widget([
+    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             [
