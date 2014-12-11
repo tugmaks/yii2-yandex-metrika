@@ -25,6 +25,10 @@ use yii\helpers\Url;
                 'label' => 'Уровень доступа',
                 'value' => $this->context->module->getCounterPermission((string) $model->permission),
             ],
+            [
+                'label' => 'Название',
+                'value' => var_dump($model->name),
+            ],
         ],
     ]);
     ?>
