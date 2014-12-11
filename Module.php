@@ -56,11 +56,10 @@ class Module extends \yii\base\Module {
         'CS_WAIT_FOR_CHECKING' => 'Ожидает проверки наличия.',
         'CS_WAIT_FOR_CHECKING_LOAD_DATA' => 'Ожидает проверки наличия, данные поступают.',
     ];
-    
-    public $counterPermission =[
-        'own'=>'Cобственный счетчик пользователя',
-        'view'=>'Гостевой счетчик с уровнем доступа «только просмотр»',
-        'edit'=>'Гостевой счетчик с уровнем доступа «полный доступ»'
+    public $counterPermission = [
+        'own' => 'Cобственный счетчик пользователя',
+        'view' => 'Гостевой счетчик с уровнем доступа «только просмотр»',
+        'edit' => 'Гостевой счетчик с уровнем доступа «полный доступ»'
     ];
 
     public function init() {
@@ -69,8 +68,8 @@ class Module extends \yii\base\Module {
         $this->OAuthToken = $settings->token;
     }
 
-    public function getCounters() {
-        $counters = $this->callApi('counters')->counters->counter;
+    public function getCounters($params = []) {
+        $counters = $this->callApi('counters', $params)->counters->counter;
         return static::asArray($counters);
     }
 
@@ -82,17 +81,20 @@ class Module extends \yii\base\Module {
         if (!array_key_exists($resource, $this->resources)) {
             throw new HttpException(404, "YM: Resource $resource not found.");
         }
-        $resoursePath = preg_replace_callback("/{\\w+}/", function ($matches) use ($params) {
+        $requiredParams = [];
+        $resoursePath = preg_replace_callback("/{\\w+}/", function ($matches) use ($params, &$requiredParams) {
             $match = strtr($matches[0], ['{' => '', '}' => '']);
             if (!array_key_exists($match, $params)) {
                 throw new HttpException(404, "YM: Missing required $match parameter.");
             }
+            $requiredParams[$match] = $params[$match];
             return $params[$match];
         }, $this->resources[$resource]);
         $resourceUrl = $this->apiUrl . $resoursePath . '?oauth_token=' . $this->OAuthToken;
-
+        $additionalParams = array_diff($params, $requiredParams);
         $curl = new Curl();
-        $curl->$method($resourceUrl);
+        $curl->$method($resourceUrl, $additionalParams);
+
         return $curl->response;
     }
 
@@ -108,7 +110,7 @@ class Module extends \yii\base\Module {
     public function getCounterStatus($code) {
         return $this->counterStatus[$code];
     }
-    
+
     public function getCounterpermission($permission) {
         return $this->counterPermission[$permission];
     }
