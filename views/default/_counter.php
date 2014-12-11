@@ -29,6 +29,10 @@ use yii\helpers\Url;
                 'label' => 'Название',
                 'value' => (string) $model->name,
             ],
+            [
+                'label' => 'id',
+                'value' => Html::a($model->id, ['counter',['id'=>$model->id]]),
+            ],
         ],
     ]);
     ?>
