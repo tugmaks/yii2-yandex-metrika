@@ -44,7 +44,10 @@ class DefaultController extends Controller {
     }
 
     public function actionCounter($id) {
-        return $this->render('counter', ['counter' => $this->module->getCounter($id)]);
+        return $this->render('counter', ['counter' => $this->module->getCounter([
+                        'id' => $id,
+                    ])
+        ]);
     }
 
     public function actionVerificationCode() {
